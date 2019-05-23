@@ -1,2 +1,1 @@
 /home/g_i_m/SO/Lab10/in.txt
-/home/g_i_m/SO/Lab11/in.txt

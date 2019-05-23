@@ -67,14 +67,14 @@ int main()
                exit(0);
           }
           char* command = (char*)malloc(200 * sizeof(char));
-          strcpy(command, "change_perm.sh");
+          strcpy(command, "./change_perm.sh");
           strcat(command, " ");
           strcat(command, fileName);
           strcat(command, " ");
           strcat(command, rights);
           system(command);
           char* res;
-          int fd = open("/home/g_i_m/SO/Lab10/in.txt", O_RDONLY);
+          int fd = open("in.txt", O_RDONLY);
           res = readWord(fd);
           if (strcmp(res, "") != 0)
           {
@@ -82,7 +82,7 @@ int main()
           }
           else
           {
-               strcpy(command, "find_file.sh ");
+               strcpy(command, "./find_file.sh ");
                strcat(command, fileName);
                system(command);
                res = readWord(fd);

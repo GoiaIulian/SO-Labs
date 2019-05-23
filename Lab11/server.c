@@ -41,15 +41,20 @@ int main()
      {
           fd = open(myFifo, O_RDONLY);
           fileName = readWord(fd);
+          close(fd);
+
           if (strcmp(fileName, "exit()") == 0)
           {
                free(fileName);
                exit(0);
           }
+          fd = open(myFifo, O_WRONLY);
           file = open(fileName, O_RDONLY);
+
           if (file < 0)
           {
-               printf("The file doesn't exist \n");
+               char* e = "The file doesn't exist";
+               write(fd, e, strlen(e) + 1);
           }
           else
           {
@@ -66,13 +71,14 @@ int main()
                     count++;
                     free(w);
                }
-               printf("the file '%s' contains %d words \n", fileName, count);
+               char tmp[12]={0x0};
+               sprintf(tmp, "%d", count);
+               write(fd, tmp, sizeof(tmp));
           }
-          close(fd);
           free(fileName);
           close(file);
+          close(fd);
      }
 
-     free(fileName);
      return 0;
 }
