@@ -36,6 +36,8 @@ int main()
      mkfifo(myFifo, 0666);
      char* fileName;
      system("clear");
+     printf("Enter 'exit()' for the name of the file if you want to exit the client : \n");
+     printf("Give the path of the file : \n");
 
      while(1)
      {

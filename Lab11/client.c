@@ -30,13 +30,14 @@ char* readLine(int fd)
 
 int main()
 {
-     system("clear");
+     system("gcc server.c");
+     system("./a.out &");
+
      int fd;
      char* myFifo = "chanal";
      mkfifo(myFifo, 0666);
      char* fileName;
-     printf("Enter 'exit()' for the name of the file if you want to exit the client : \n");
-     printf("Give the path of the file : \n");
+
 
      while (1)
      {
